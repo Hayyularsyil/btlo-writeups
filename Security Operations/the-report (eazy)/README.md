@@ -76,4 +76,5 @@ Masih pada topik Ransomware namun fokus kita arahkan ke bagian akhir yaitu Take 
 Challenge ini berupa analisis laporan Red Canary Threat Detection Report 2022. Hasilnya saya rangkum jadi prioritas deteksi dan mitigasi untuk SOC, lihat bagian [Insight untuk SOC](insight-untuk-soc.md).
 
 ## Referensi
+[Lab The Report](https://blueteamlabs.online/home/challenge/the-report-a6dd340dba)
 [Red Canary Threat Detection Report 2022](https://blueteamlabs.online/storage/files/8c4cbf1af327dca7176473fa355e2dc29cfc527b.zip)
