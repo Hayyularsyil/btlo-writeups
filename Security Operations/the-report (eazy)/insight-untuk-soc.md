@@ -1,5 +1,7 @@
 ## Insight untuk SOC
 
+[<- kembali ke write-up The Report](README.md)
+
 Dari hasil membaca laporan, ini yang menurut saya perlu diprioritaskan
 oleh SOC yang baru dibentuk.
 
