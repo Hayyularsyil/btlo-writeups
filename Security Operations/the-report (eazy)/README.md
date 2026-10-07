@@ -4,85 +4,71 @@
 Anda bekerja di SOC (Security Operations Center) yang baru didirikan dan masih membutuhkan banyak pekerjaan untuk menjadikannya pusat operasi yang berfungsi penuh. Sebagai bagian dari pengumpulan intelijen, Anda ditugaskan untuk mempelajari laporan ancaman yang dirilis pada tahun 2022 dan menyarankan beberapa hasil yang bermanfaat bagi SOC Anda.
 
 ## Methodology
-Setelah file zip diekstrak saya mulai buka file `.pdf` nya via Microsoft Edge
+Setelah file zip diekstrak saya mulai buka file `.pdf` nya via Microsoft Edge. Nah LAB ini fokusnya adalah analis terhadap laporan Threat Detection 2022 oleh Red Canary.
 
 ![](image/image1.png)
 
-**Pertanyaan (1) Sebutkan serangan rantai pasokan yang terkait dengan pustaka pencatatan Java pada akhir tahun 2021 (Format: AttackNickname)**
+**Pertanyaan (1) Sebutkan serangan rantai pasokan (supply chain) yang terkait dengan pustaka pencatatan Java pada akhir tahun 2021 (Format: AttackNickname)**
 
-At was easy to think the primary recipient was johnsmith123 but I identified a bounce error coming from line 116. This showed the primary 
-email the message was intended to be delivered to.
+Kita bisa membuka bagian supply chain compromise untuk menemukan serangan supply chain yang dimaksud terkait pencacatan java, nah setelah saya membaca beberapa serangan maka saya menumukan serangan yang dimaksud
 
 ![](image/image2.png)
+
+Jadi maksud soal ini adalah memberitahukan kita serangan-serangan supply chain attack pada laporan Threat Detection yang terdiri dari 4 serangan, namun pada soal ini spesifik menyoroti serangan supply chain pada pustaka pencacatan java
+
+**Pertanyaan (2) Sebutkan ID Teknik MITRE yang memengaruhi lebih dari 50% pelanggan (Format: TXXXX)**
+
+Pada bagian ini kita diarahkan untuk melihat laporan top teknik MITTRE AT&CK yang digunakan, nama teknik dan rank tekniknya serta seberapa besar pengaruhnya ke customer, soal ini spesfik menyoroti teknik MITRE AT&CK yang mempengaruhi lebih daei 50% customer.
 ![](image/image3.png)
 
-**What is the subject of this email?**
 
-Here, I simply searched for the word subject using the key combination **ctrl+f** which returned the subject of the email.
+**Pertanyaan (3) Sebutkan nama 2 kerentanan yang terkait dengan Exchange Server (Format: VulnNickname, VulnNickname)**
+
+Pada bagian ini kita diminta untuk menganalisis tren kerentanan (Vulnerability) ada tahun 2021 pada platform-platform perusahaan yang populer. Soal ini spesifik meminta kita untuk menganalisis terkait kerentana dengan Exchange Server.
 
 ![](image/image4.png)
 ![](image/image5.png)
 
-**Pertanyaan (2) Sebutkan ID Teknik MITRE yang memengaruhi lebih dari 50% pelanggan (Format: TXXXX)**
-
-So from identifying the subject of the email, the **Sent:** tag showed the exact date and time the eail was sent.
-
-![](image/image6.png)
-![](image/image7.png)
-
-**Pertanyaan (3) Sebutkan nama 2 kerentanan yang terkait dengan Exchange Server (Format: VulnNickname, VulnNickname)**
-
-I searched for the **X-Originating-IP** header which is a non-standard email header used to identify the original client IP address of the sender. And there it was..
-
-![](image/image8.png)
-![](image/image9.png)
-
 **Pertanyaan (4) Kirimkan CVE dari kerentanan zero day pada driver yang menyebabkan RCE dan mendapatkan hak akses SYSTEM (Format: CVE-XXXX-XXXXX)**
 
-Now I needed to leave VS Code and go to whois.domaintools.com for OSINT. I waited for a couple of minutes, even tried using my phone but seems likethe website was down.
+Masih pada bagian tren kerentanan tahun 2021, namun fokus soal ini meminta kita untuk menganalisis kerentanan zeror day pada driver yang menyebabkan RCE dan mendapatkan hak akses SYSTEM fokus pada formatnya
 
-![](image/image10.png)
-
-So I decided to fall back on linux! And there it was..
-![](image/image11.png)
-
-
-But then why not go back to VS code, the host might have just been there and I just have to search. And there it was again.. the
-X-Authenticated-Sender header huh!
-
-![](media/image12.png)
+![](image/image6.png)
 
 **Pertanyaan (5) Sebutkan 2 kelompok musuh yang memanfaatkan SEO untuk mendapatkan akses awal (Format: Grup1, Grup2)**
 
-The attachment filename was not visible by inspecting the eml file in VS code hence to get the filename, I had to drop the eml file intothunderbird. Hence I downloaded it
+Pada bagian kita diminta untuk menganalisis User-initiated initial access yang dimana menurut report tersebut banyak sekali pengguna yang mencari konten yang tanpa mereka sadari bersifat berbahaya. Soal ini spesisfik meminta kita untuk menemukan kelompok jahat yang memanfaatkan SEO untuk mendapatkan akses awal
 
-
-
-So after opening the eml in Thunderbird, I located the filename and
-definitely, its extension is .eml.
-
-
+![](image/image7.png)
 
 **Pertanyaan (6) Dalam aturan deteksi, apa yang harus disebutkan sebagai proses induk jika kita mencari eksekusi file js berbahaya? [Petunjuk: Bukan CMD] (Format: ParentProcessName.exe)**
 
-Looking at the latter part of the file within Thunderbird was the URL.
+Pada bagian ini kita diminta menganalis bagian Detection opportunities disana kita menemukan yang namanya parentProcessName yang disebut sebagai proses induk jika kita ingin mencari file eksekusi js yang memiliki potensi bahaya
+
+![](image/image8.png)
 
 
 **Pertanyaan (7) Geng ransomware mulai menggunakan model afiliasi untuk mendapatkan akses awal. Sebutkan prekursor yang digunakan oleh afiliasi grup ransomware Conti (Format: Affiliate1, Affiliate2, Affiliate3)**
+Pada bagian kita diminta untuk menganalisis bagian The affiliate model pada topik Ransomware spesifik soal ini membahas kelompok atau genk ransomware yang menggunakan model affiliasi untuk mendapatkan akses awal. Bahaya dari kelompok ini biasanya mengandalkan sejumlah afiliasi untuk memberikan akses awal ke suatu lingkungan sebelum mereka mengenkripsi file atau melakukan tindakan lainnya. ada 3 affiliate yang saya temukan di model affiliasi ini sesuai dengan permintaan soal juga
 
-From the URL found inside the attachment, the hostname is blogspot and I know very well that, that's provided by blogger! Lol I used to share blogs there. The webpage is hosted on blogger.
+![](image/image9.png)
+
 
 **Pertanyaan (8) Target utama penambang koin adalah perangkat lunak usang. Sebutkan 2 perangkat lunak usang yang disebutkan dalam laporan (Format: Perangkat Lunak1, Perangkat Lunak2)**
 
+Pada bagian ini meminta kita untuk mencari perangkat lunak yang sudah usang yang dimana perangkat lunak usang sebagian besar memiliki masalah kerentanan karena tidak pernah dilakukan pembaruan patch. Kerentanan inilah yang bisa dimanfaatkan oleh penyerang untuk masuk ke sistem kita. ada  2 perangkat lunak usang yang bisa kita temukan pada laporan tersebut
+
+![](image/image10.png)
+
 **Pertanyaan (9) Sebutkan nama kelompok ransomware yang mengancam akan melakukan serangan DDoS jika mereka tidak membayar tebusan (Format: NamaGrup)**
+
+Pada bagian ini kita kembali lagi ke topik Ransomware namun fokus kita kali ini pada bagian Beyond encryption. Salah satu tren ransomware yang signifikan pada tahun 2021 adalah meningkatnya jumlah pelaku ancaman yang memperluas cakupan serangan mereka melampaui sekadar enkripsi data. Nah pada soal ini kita diminta untuk menemukan kelompok yang melakukan pengancaman dengan melakukan seranggan DDoS jika tidak membayar tebusan
+
+![](image/image11.png)
 
 **Pertanyaan (10) Apa langkah pengamanan yang perlu kita aktifkan untuk koneksi RDP guna melindungi dari serangan ransomware? (Format: XXX)**
 
-Here, I copy the URL and paste it into URL2PNG which returned, "Blog has
-been removed". Lol the answer was hidden in plain sight.
+Masih pada topik Ransomware namun fokus kita arahkan ke bagian akhir yaitu Take Action salah satunya menjelaskan langkah pengamanan yang perlu diaktifkan koneksi RDP untuk melindungi dari serangan Ransomware
 
+![](media/image12.png)
 
-## Results
-
-## Reflection
-This was an awesome investigation of email, as a phishing vector. I got to understand other header fields useful in conducting email phishing analysis.
