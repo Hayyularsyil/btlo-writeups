@@ -70,5 +70,5 @@ Pada bagian ini kita kembali lagi ke topik Ransomware namun fokus kita kali ini 
 
 Masih pada topik Ransomware namun fokus kita arahkan ke bagian akhir yaitu Take Action salah satunya menjelaskan langkah pengamanan yang perlu diaktifkan koneksi RDP untuk melindungi dari serangan Ransomware
 
-![](media/image12.png)
+![](image/image12.png)
 
