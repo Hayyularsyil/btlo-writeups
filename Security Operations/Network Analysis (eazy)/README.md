@@ -6,7 +6,12 @@ SOC menerima peringatan di SIEM mereka untuk 'Pemindaian Port Lokal ke Lokal' di
 
 ## Methodology
 
-Setelah file zip diekstrak saya mulai buka file `.pcap` nya via Microsoft Edge. Nah LAB ini fokusnya adalah analis terhadap laporan atau peringatan SIEM untuk menganalisis file yang .pcap yang diberikan apakah terdapat aktivitas berbahaya atau tidak.
+File zip diekstrak di VM Kali Linux (snapshot dibuat sebelum mulai),
+lalu file `.pcap` dibuka dengan Wireshark. Pendekatannya:
+1. Melihat gambaran umum lalu lintas lewat Statistics → Conversations.
+2. Mengidentifikasi host yang mencurigakan.
+3. Memfilter lalu lintas host itu untuk menentukan tahapan serangan.
+4. Mengikuti HTTP Stream untuk melihat isi request dan response.
 
 ## Tools
 
@@ -23,13 +28,18 @@ Pada bagian ini kita ingin mencari IP yang melakukan aktivitas pemindaian port. 
 
 **Rentang port apa yang dipindai oleh host yang mencurigakan?**
 
-Pada bagian kita akan mencari tahu rentang port yang di Scan oleh si penyerang. Caranya kita akan memasukan filter untuk memfilter trafik penyerang berikut filternya **ip.src == <IP-Penyerang> \&\& tcp.flag.syn == 1** makan akan muncul paket-paket hasil filternya di layar wireshark. namun kita tidak mencari disana kita akan cari dengan membuka tab **statistic --> Conversation** setelah masuk di layer Conversation kita klik tab **Port** untuk mengurutkan port dari yang terkecil yang terbesar itulah rentang port yang di scan oleh penyerang.
+Pada bagian kita akan mencari tahu rentang port yang di Scan oleh si penyerang. Caranya kita akan memasukan filter untuk memfilter trafik penyerang berikut filternya **ip.src == <IP-Penyerang> && tcp.flags.syn == 1** makan akan muncul paket-paket hasil filternya di layar wireshark. namun kita tidak mencari disana kita akan cari dengan membuka tab **statistic --> Conversation** setelah masuk di layer Conversation kita klik tab **Port** untuk mengurutkan port dari yang terkecil yang terbesar itulah rentang port yang di scan oleh penyerang.
 
 ![](image/image2.png)
 
 **Jenis pemindaian port apa yang dilakukan?**
 
-Pada bagian ini kita akan mengamati paket TCP yang dikirim penyerang saat melakukan scanning. Kita bisa memasukan filter tcp.flag.syn == 1 \&\& tcp.flag.ack == 0 . Jika setelah kita filter dengan filter tersebut dan kemudian paket yang muncul hanya SYN tanpa menyelesaikan 3 way handshake maka ia disebut  **TCP SYN**, namun jika ia menyelesaikan 3 way handshake (SYN SYN-ACK RST) maka disebut **TCP Connect Scan**.
+Dua jenis scan yang umum dibedakan dari respons penyerang setelah menerima SYN-ACK:
+
+- **TCP SYN scan (half-open):** SYN → SYN-ACK → **RST**. Handshake tidak diselesaikan.
+- **TCP Connect scan:** SYN → SYN-ACK → **ACK**. Handshake diselesaikan, lalu koneksi ditutup.
+
+Filter `tcp.flags.syn == 1 && tcp.flags.ack == 0` hanya menampilkan paket SYN, jadi tidak cukup untuk membedakan keduanya. Karena itu saya memilih satu port yang terbuka, lalu melihat urutan paketnya (klik kanan paket → **Conversation Filter → TCP**). Pada kasus ini balasan penyerang setelah SYN-ACK adalah [ACK / RST], sehingga jenis scan-nya adalah
 
 ![](image/image01.png)
 
@@ -55,7 +65,7 @@ Pada bagian ini kita diminta menganalis bagian nama web shell yang diunggah atau
 
 **Parameter apa yang digunakan di web shell untuk mengeksekusi perintah?**
 
-Jangan tutup jendela HTTP Stream pada packet tadi. Selanjutnya kita akan amati dibagian kode php nya lihat dan amati parameter apa yang digunakan amati dengan seksama pada tanda kurung siku setelah \_REQUEST.
+Jangan tutup jendela HTTP Stream pada packet tadi. Selanjutnya kita akan amati dibagian kode php nya lihat dan amati parameter apa yang digunakan amati dengan seksama pada tanda kurung siku setelah _REQUEST.
 
 ![](image/image8.png)
 
@@ -79,11 +89,18 @@ Masih pada paket tadi, kalau tadi saya hanya mengandalkan keterangan di tab bagi
 
 ![](image/image12.png)
 
+## Kesimpulan
+Aktivitas ini [berbahaya / tidak], karena [alasan singkat].
 
+**Alur serangan:** port scan → pengintaian web → upload web shell → eksekusi perintah → reverse shell.
+
+**MITRE ATT&CK:** T1046 (Network Service Discovery), T1505.003 (Web Shell), T1059 (Command and Scripting Interpreter).
+
+**Rekomendasi:** deteksi pola SYN ke banyak port di SIEM, batasi upload file ke web server, dan terapkan egress filtering.
 
 \## Referensi
 
-\- \[Lab Network Analysis](https://blueteamlabs.online/home/challenge/network-analysis-web-shell-d4d3a2821b)
+- [Lab Network Analysis](https://blueteamlabs.online/home/challenge/network-analysis-web-shell-d4d3a2821b)
 
-\- \[File pcap](https://blueteamlabs.online/storage/files/DdMgCqiLCvTxMd6XYQgaXCyjDH8M6b.zip)
+- [File pcap](https://blueteamlabs.online/storage/files/DdMgCqiLCvTxMd6XYQgaXCyjDH8M6b.zip)
 
