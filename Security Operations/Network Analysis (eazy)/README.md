@@ -98,7 +98,7 @@ Aktivitas ini [berbahaya / tidak], karena [alasan singkat].
 
 **Rekomendasi:** deteksi pola SYN ke banyak port di SIEM, batasi upload file ke web server, dan terapkan egress filtering.
 
-\## Referensi
+## Referensi
 
 - [Lab Network Analysis](https://blueteamlabs.online/home/challenge/network-analysis-web-shell-d4d3a2821b)
 
