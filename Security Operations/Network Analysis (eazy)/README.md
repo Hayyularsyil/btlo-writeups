@@ -79,7 +79,7 @@ Pada bagian ini kita akan mencari perintah yang dieksekusi pertama oleh penyeran
 
 **9). Jenis koneksi shell apa yang diperoleh penyerang melalui eksekusi perintah?**
 
-Masih di layar yang sama dengan dengan sebelumnya kita amati dibagian kolom info ekskusi perintah yang dijalankan kemudian klik paket tersebut dan kita amati di bagian tab bawah tentang paket atau bisa menggunakan HTTP Stream. Jika penyerang 
+Masih di layar yang sama dengan dengan sebelumnya kita amati dibagian kolom info ekskusi perintah yang dijalankan kemudian klik paket tersebut dan kita amati di bagian packet detail bawah tentang paket atau bisa menggunakan HTTP Stream. Jika penyerang 
 
 mengeksekusi perintah bash/python yang dimana membuat victim menghubungi kembali si penyerang maka tipe koneksi shell tersebut adalah **Reverse Shell** .
 
