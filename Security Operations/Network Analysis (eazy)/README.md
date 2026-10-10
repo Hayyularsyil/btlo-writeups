@@ -61,7 +61,7 @@ Pada bagian ini kita diminta untuk menemukan file php yang digunakan penyerang u
 
 **6). Apa nama web shell yang diunggah oleh penyerang?**
 
-Pada bagian ini kita diminta menganalis bagian nama web shell yang diunggah atau upload oleh penyerang. Tetap gunakan filter pada no 5 **http.request.method == "POST"** kemudian cara paling gampang cek kolom info kemudian scroll sampai menemukan info upload kemudian klik kanan pilih **Follow --> HTTP Stream** setelah muncul jendela lalu amati dibagian Content-Disposition.
+Pada bagian ini kita diminta menganalis bagian nama web shell yang diunggah atau diupload oleh penyerang. Tetap gunakan filter pada no 5 **http.request.method == "POST"** kemudian cara paling gampang cek kolom info kemudian scroll sampai menemukan info upload kemudian klik kanan pilih **Follow --> HTTP Stream** setelah muncul jendela lalu amati dibagian Content-Disposition.
 
 ![](image/image7.png)
 
