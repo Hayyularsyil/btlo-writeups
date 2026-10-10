@@ -53,7 +53,7 @@ Pada bagian ini spesifik kita diminta untuk mencari tahu mengenai tools yang dig
 
 ![](image/image4.png)
 
-**5). Apa nama file PHP yang digunakan penyerang untuk mengunggah web shell? **
+**5). Apa nama file PHP yang digunakan penyerang untuk mengunggah web shell?**
 
 Pada bagian kita diminta untuk menemukan file php yang digunakan penyerang untuk mengunggah web shell. Nah caranya disini kita masukan filter Kembali dengan **http.request.method == "POST"** kemudian buka salah satu paket klik kanan lalu pilih **Follow --> HTTP Stream** nanti akan muncul jendela berupa teks merah untuk request dan teks biru untuk response scroll ke Bawah untuk menemukan endpoind upload pada bagian teks biru (response).
 
