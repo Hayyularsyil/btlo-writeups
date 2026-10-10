@@ -90,7 +90,7 @@ Masih pada paket tadi, kalau tadi saya hanya mengandalkan keterangan di bagian p
 ![](image/image12.png)
 
 ## Kesimpulan
-Aktivitas ini [berbahaya / tidak], karena [alasan singkat].
+Aktivitas ini [berbahaya / tidak]?, Aktivitas ini **berbahaya**: port scan dilanjutkan dengan upload web shell dan reverse shell ke penyerang.
 
 **Alur serangan:** port scan → pengintaian web → upload web shell → eksekusi perintah → reverse shell.
 
