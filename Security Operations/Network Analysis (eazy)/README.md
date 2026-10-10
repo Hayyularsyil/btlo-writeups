@@ -28,7 +28,7 @@ Pada bagian ini kita ingin mencari IP yang melakukan aktivitas pemindaian port. 
 
 **2). Rentang port apa yang dipindai oleh host yang mencurigakan?**
 
-Pada bagian kita akan mencari tahu rentang port yang di Scan oleh si penyerang. Caranya kita akan memasukan filter untuk memfilter trafik penyerang berikut filternya **ip.src == <IP-Penyerang> && tcp.flags.syn == 1** makan akan muncul paket-paket hasil filternya di layar wireshark. namun kita tidak mencari disana kita akan cari dengan membuka tab **statistic --> Conversation** setelah masuk di layer Conversation kita klik tab **Port** untuk mengurutkan port dari yang terkecil yang terbesar itulah rentang port yang di scan oleh penyerang.
+Pada bagian kita akan mencari tahu rentang port yang di Scan oleh si penyerang. Caranya kita akan memasukan filter untuk memfilter trafik penyerang berikut filternya **ip.src == [IP-Penyerang] && tcp.flags.syn == 1** makan akan muncul paket-paket hasil filternya di layar wireshark. namun kita tidak mencari disana kita akan cari dengan membuka tab **statistic --> Conversation** setelah masuk di layer Conversation kita klik tab **Port** untuk mengurutkan port dari yang terkecil yang terbesar itulah rentang port yang di scan oleh penyerang.
 
 ![](image/image2.png)
 
