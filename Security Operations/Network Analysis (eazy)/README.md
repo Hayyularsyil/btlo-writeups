@@ -47,7 +47,7 @@ Hasilnya hanya menampilkan paket SYN dari penyerang. Pola ini mengarah ke **TCP 
 
 **4). Dua tools lagi digunakan untuk melakukan pengintaian terhadap Open Port, apa saja tools tersebut?**
 
-Pada bagian ini spesifik kita diminta untuk mencari tahu mengenai tools yang digunakan penyerang untuk Rekognisi/Enumerasi. Pada bagian ini saya menggunakan filter **http.request** untuk melihat paket request dari si penyerang tool-tool ini biasanya meninggalkan jejak. kita bisa coba buka salah satu paket kemudian cek packet detail spesifik pada bagian detail http di bagian user-agent.
+Pada bagian ini spesifik kita diminta untuk mencari tahu mengenai tools yang digunakan penyerang untuk Rekognisi/Enumerasi. Pada bagian ini saya menggunakan filter **http.request** untuk melihat paket request dari si penyerang tool-tool ini biasanya meninggalkan jejak. kita bisa coba buka beberapa paket kemudian cek packet detail spesifik pada bagian detail http di bagian user-agent.
 
 ![](image/image3.png)
 
