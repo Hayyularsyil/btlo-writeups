@@ -39,7 +39,9 @@ Dua jenis scan yang umum dibedakan dari respons penyerang setelah menerima SYN-A
 - **TCP SYN scan (half-open):** SYN → SYN-ACK → **RST**. Handshake tidak diselesaikan.
 - **TCP Connect scan:** SYN → SYN-ACK → **ACK**. Handshake diselesaikan, lalu koneksi ditutup.
 
-Filter `tcp.flags.syn == 1 && tcp.flags.ack == 0` hanya menampilkan paket SYN, jadi tidak cukup untuk membedakan keduanya. Karena itu saya memilih satu port yang terbuka, lalu melihat urutan paketnya (klik kanan paket → **Conversation Filter → TCP**). Pada kasus ini balasan penyerang setelah SYN-ACK adalah [ACK / RST], sehingga jenis scan-nya adalah
+Filter `tcp.flags.syn == 1 && tcp.flags.ack == 0`
+
+Hasilnya hanya menampilkan paket SYN dari penyerang. Pola ini mengarah ke **TCP SYN scan**, karena penyerang mengirim SYN ke banyak port tanpa menyelesaikan koneksi (TCP Connect scan akan menyelesaikan 3-way handshake).
 
 ![](image/image01.png)
 
