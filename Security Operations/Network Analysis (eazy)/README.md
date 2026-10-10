@@ -85,7 +85,7 @@ Masih di layar yang sama dengan dengan sebelumnya kita amati dibagian kolom info
 
 **10). Port apa yang dia gunakan untuk koneksi shell?**
 
-Masih pada paket tadi, kalau tadi saya hanya mengandalkan keterangan di bagian packet detail selanjutnya untuk menemukan port untuk koneksi shell oleh penyerang saya membuka paket tadi dengan HTTP Stream kemudian kita amati atau perhatikan dengan seksama dibagian s.connect disitu dengan ip dan port.
+Masih pada paket tadi, kalau tadi saya hanya mengandalkan keterangan di bagian packet detail selanjutnya untuk menemukan port untuk koneksi shell oleh penyerang saya membuka paket tadi dengan HTTP Stream kemudian kita amati atau perhatikan dengan seksama dibagian **s.connect** disitu dengan ip dan port (%22[ip penyerang]%22[port].
 
 ![](image/image12.png)
 
